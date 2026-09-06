@@ -350,11 +350,13 @@ struct ElementArt: View {
                 .fill(RadialGradient(colors: [tint, tint.opacity(0.5)],
                                      center: .init(x: 0.35, y: 0.3),
                                      startRadius: 1, endRadius: rect.width * 0.3))
-                .frame(width: rect.width * 0.38, height: rect.width * 0.38)
+                .frame(width: min(rect.width, rect.height) * 0.38,
+                       height: min(rect.width, rect.height) * 0.38)
                 .offset(x: -rect.width * 0.1, y: -rect.height * 0.08)
             Circle()
                 .fill(tint.opacity(0.9))
-                .frame(width: rect.width * 0.17, height: rect.width * 0.17)
+                .frame(width: min(rect.width, rect.height) * 0.17,
+                       height: min(rect.width, rect.height) * 0.17)
                 .offset(x: rect.width * 0.2, y: 0)
             Ellipse()
                 .fill(Color.white.opacity(0.75))
@@ -433,18 +435,22 @@ struct ElementArt: View {
         let body = rect.insetBy(dx: rect.width * 0.24, dy: rect.height * 0.2)
         let shape = polygon(in: body, points: 5 + element.z % 3, jitter: 0.38,
                             seed: element.z, rounded: false)
+        // Size the glow and ring off the SHORT side. Using rect.width made them
+        // taller than the box in any wide, short frame, which clipped the shard
+        // in ElementDetailView.
+        let d = min(rect.width, rect.height)
         return ZStack {
             Circle()
                 .fill(RadialGradient(colors: [tint.opacity(pulse ? 0.4 : 0.15), .clear],
-                                     center: .center, startRadius: 0, endRadius: rect.width * 0.5))
-                .frame(width: rect.width, height: rect.width)
+                                     center: .center, startRadius: 0, endRadius: d * 0.5))
+                .frame(width: d, height: d)
             shape.fill(LinearGradient(colors: [tint, tint.opacity(0.42)],
                                       startPoint: .top, endPoint: .bottom))
             shape.stroke(Color.white.opacity(0.5), lineWidth: 1.5)
             Circle()
                 .stroke(tint.opacity(pulse ? 0.5 : 0.12), lineWidth: 2)
-                .frame(width: rect.width * (pulse ? 0.9 : 0.55),
-                       height: rect.width * (pulse ? 0.9 : 0.55))
+                .frame(width: d * (pulse ? 0.9 : 0.55),
+                       height: d * (pulse ? 0.9 : 0.55))
         }
         .shadow(color: tint.opacity(0.7), radius: pulse ? 22 : 11)
     }
