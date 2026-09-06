@@ -53,7 +53,7 @@ struct HomeView: View {
 
     private var title: some View {
         VStack(spacing: 2) {
-            Text("Elementary")
+            Text("118 Boxes")
                 .font(Theme.rounded(34, .heavy))
                 .foregroundStyle(Theme.textHi)
             Text("All 118 elements")

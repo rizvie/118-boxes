@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct ElementaryApp: App {
+struct Boxes118App: App {
     @AppStorage("soundOn") private var soundOn = true
     @AppStorage("speechOn") private var speechOn = true
 

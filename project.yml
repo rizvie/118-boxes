@@ -1,4 +1,4 @@
-name: Elementary
+name: Boxes118
 options:
   bundleIdPrefix: io.riz
   deploymentTarget:
@@ -8,7 +8,9 @@ settings:
     MARKETING_VERSION: "1.0"
     CURRENT_PROJECT_VERSION: "1"
 targets:
-  Elementary:
+  # Target and Swift module name. NOT "118Boxes": a Swift module name cannot
+  # start with a digit. The user only ever sees CFBundleDisplayName below.
+  Boxes118:
     type: application
     platform: iOS
     sources:
@@ -16,8 +18,8 @@ targets:
     settings:
       base:
         GENERATE_INFOPLIST_FILE: YES
-        PRODUCT_BUNDLE_IDENTIFIER: io.riz.Elementary
-        INFOPLIST_KEY_CFBundleDisplayName: Elementary
+        PRODUCT_BUNDLE_IDENTIFIER: io.riz.boxes118
+        INFOPLIST_KEY_CFBundleDisplayName: 118 Boxes
         DEVELOPMENT_TEAM: 277KG99U9C
         CODE_SIGN_STYLE: Automatic
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
