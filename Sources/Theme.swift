@@ -75,3 +75,24 @@ struct Card<Content: View>: View {
             .padding(.bottom, depth)
     }
 }
+
+
+/// Keeps content to a comfortable column instead of stretching edge to edge on
+/// iPad. Without this the iPhone layout runs the full width of a 13" screen and
+/// leaves two thirds of it empty, which is what shipping "universal" as a one
+/// line Info.plist change actually looks like.
+struct ReadableColumn: ViewModifier {
+    var maxWidth: CGFloat = 640
+
+    func body(content: Content) -> some View {
+        content
+            .frame(maxWidth: maxWidth)
+            .frame(maxWidth: .infinity)   // centre the column in the screen
+    }
+}
+
+extension View {
+    func readableColumn(_ maxWidth: CGFloat = 640) -> some View {
+        modifier(ReadableColumn(maxWidth: maxWidth))
+    }
+}

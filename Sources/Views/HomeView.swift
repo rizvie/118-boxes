@@ -27,6 +27,7 @@ struct HomeView: View {
                     }
                     .padding(.horizontal, 18)
                     .padding(.bottom, 30)
+                    .readableColumn()
                 }
             }
             .toolbar {

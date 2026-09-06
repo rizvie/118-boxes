@@ -98,6 +98,7 @@ struct ResultView: View {
             .buttonStyle(.plain)
         }
         .padding(.horizontal, 20)
+        .readableColumn()
         .padding(.bottom, 16)
         .onAppear { pop = true }
     }

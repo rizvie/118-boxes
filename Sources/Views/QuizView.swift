@@ -48,6 +48,7 @@ struct QuizView: View {
             }
         }
         .padding(.horizontal, 18)
+        .readableColumn()
         .padding(.bottom, 12)
     }
 
