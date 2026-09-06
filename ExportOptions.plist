@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Xcode 15.3+ calls this "app-store-connect"; older Xcode wants "app-store". -->
+	<key>method</key>
+	<string>app-store-connect</string>
+	<!-- Upload during export, so there is no separate altool step. -->
+	<key>destination</key>
+	<string>upload</string>
+	<key>teamID</key>
+	<string>824XEX8YEL</string>
+	<key>signingStyle</key>
+	<string>automatic</string>
+	<key>uploadSymbols</key>
+	<true/>
+	<!-- Let Xcode pick the build number so repeat uploads never collide.
+	     project.yml pins CURRENT_PROJECT_VERSION to 1, which would be rejected
+	     on the second upload otherwise. -->
+	<key>manageAppVersionAndBuildNumber</key>
+	<true/>
+</dict>
+</plist>

@@ -20,7 +20,10 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         PRODUCT_BUNDLE_IDENTIFIER: io.riz.boxes118
         INFOPLIST_KEY_CFBundleDisplayName: 118 Boxes
-        DEVELOPMENT_TEAM: 277KG99U9C
+        # Must be the team that owns io.riz.boxes118. This project originally
+        # pointed at a different team of mine, which would have failed to find a
+        # matching provisioning profile at archive time.
+        DEVELOPMENT_TEAM: "824XEX8YEL"
         CODE_SIGN_STYLE: Automatic
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait

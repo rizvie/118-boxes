@@ -9,3 +9,4 @@ Boxes118.xcodeproj/
 
 # macOS
 .DS_Store
+build/
