@@ -27,7 +27,9 @@ targets:
         # iPad gets all four orientations. A six-year-old holds a tablet
         # whichever way it lands, and refusing to rotate reads as a bug.
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
-        INFOPLIST_KEY_UIUserInterfaceStyle: Dark
+        # No forced dark: the app is light now, and forcing a style stops iOS
+        # from honouring the system setting for the standard controls.
+        INFOPLIST_KEY_UIUserInterfaceStyle: Light
         INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
         # 1,2 = iPhone and iPad
         TARGETED_DEVICE_FAMILY: "1,2"

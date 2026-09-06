@@ -98,7 +98,7 @@ struct QuizView: View {
                 .font(Theme.rounded(17, .semibold))
                 .foregroundStyle(Theme.textLo)
 
-            Card(tint: Theme.panel) {
+            Card(tint: engine.mode == .pictureToName ? Theme.box : Theme.panel) {
                 VStack(spacing: 14) {
                     switch engine.mode {
                     case .symbolToName:
@@ -127,7 +127,7 @@ struct QuizView: View {
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .padding(.vertical, 18)
+                .padding(.vertical, engine.mode == .pictureToName ? 0 : 18)
             }
             .offset(x: shake ? -10 : 0)
         }
@@ -298,13 +298,20 @@ struct AnswerButton: View {
                 .padding(.horizontal, 8)
                 .frame(maxWidth: .infinity)
                 .frame(height: 76)
+                // Order matters: .background stacks back-to-front, so the face
+                // must be applied first and the hard bottom edge behind it.
                 .background(
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .fill(fill)
                         .overlay(
                             RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                .strokeBorder(Theme.line, lineWidth: 1)
+                                .strokeBorder(Theme.boxLine, lineWidth: 3)
                         )
+                )
+                .background(
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .fill(Theme.boxLine)
+                        .offset(y: 4)
                 )
         }
         .buttonStyle(.plain)

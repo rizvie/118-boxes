@@ -90,7 +90,17 @@ struct HomeView: View {
             Spacer(minLength: 0)
         }
         .padding(18)
-        .background(RoundedRectangle(cornerRadius: 24, style: .continuous).fill(Theme.panel))
+        .background(
+                ZStack {
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .fill(Theme.boxLine).offset(y: 5)
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .fill(Theme.panel)
+                        .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous)
+                            .strokeBorder(Theme.boxLine, lineWidth: 3))
+                }
+            )
+            .padding(.bottom, 5)
     }
 
     private func modeCard(_ m: QuizMode) -> some View {
@@ -119,7 +129,17 @@ struct HomeView: View {
             }
             .padding(16)
             .frame(maxWidth: .infinity)
-            .background(RoundedRectangle(cornerRadius: 24, style: .continuous).fill(Theme.panel))
+            .background(
+                ZStack {
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .fill(Theme.boxLine).offset(y: 5)
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .fill(Theme.panel)
+                        .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous)
+                            .strokeBorder(Theme.boxLine, lineWidth: 3))
+                }
+            )
+            .padding(.bottom, 5)
         }
         .buttonStyle(.plain)
     }
@@ -150,7 +170,17 @@ struct HomeView: View {
             }
             .padding(16)
             .frame(maxWidth: .infinity)
-            .background(RoundedRectangle(cornerRadius: 24, style: .continuous).fill(Theme.panel))
+            .background(
+                ZStack {
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .fill(Theme.boxLine).offset(y: 5)
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .fill(Theme.panel)
+                        .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous)
+                            .strokeBorder(Theme.boxLine, lineWidth: 3))
+                }
+            )
+            .padding(.bottom, 5)
         }
         .buttonStyle(.plain)
     }

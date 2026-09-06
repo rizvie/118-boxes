@@ -74,6 +74,19 @@ struct ElementArt: View {
                 }
             }
             .frame(width: geo.size.width, height: geo.size.height)
+            // The specimen box. The samples are drawn to glow off a dark
+            // ground, so the box travels with the art rather than depending on
+            // whatever screen happens to be showing it. This is what lets the
+            // rest of the app be bright.
+            .background(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(Theme.box)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .strokeBorder(Theme.boxLine, lineWidth: 2)
+            )
         }
         .onAppear {
             guard animated else { return }
