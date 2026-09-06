@@ -18,6 +18,13 @@ struct SettingsView: View {
     /// speechVoices() is slow enough that calling it per redraw is noticeable.
     private let voices = Speaker.englishVoices()
 
+    private var versionText: String {
+        let d = Bundle.main.infoDictionary
+        let v = d?["CFBundleShortVersionString"] as? String ?? "?"
+        let b = d?["CFBundleVersion"] as? String ?? "?"
+        return "Version \(v) (\(b))"
+    }
+
     var body: some View {
         NavigationStack {
             Form {
@@ -46,6 +53,26 @@ struct SettingsView: View {
                     Button("Reset progress", role: .destructive) { confirmReset = true }
                 } footer: {
                     Text("\(stats.filter(\.isLearned).count) of 118 learned so far.")
+                }
+
+                // No parental gate on these links. That is only required in the
+                // Kids Category; this ships under Education, where a plain
+                // outbound link is fine.
+                Section("About") {
+                    Link(destination: URL(string: "https://riz.io")!) {
+                        Label("Made by Riz Jaimon", systemImage: "person.crop.circle")
+                    }
+                    Link(destination: URL(string: "https://github.com/rizvie/118-boxes")!) {
+                        Label("Source on GitHub", systemImage: "chevron.left.forwardslash.chevron.right")
+                    }
+                    Link(destination: URL(string: "https://riz.io/118-boxes/privacy")!) {
+                        Label("Privacy", systemImage: "hand.raised")
+                    }
+                    Link(destination: URL(string: "https://riz.io/118-boxes/support")!) {
+                        Label("Support", systemImage: "questionmark.circle")
+                    }
+                    Text(versionText)
+                        .foregroundStyle(Theme.textLo)
                 }
             }
             .scrollContentBackground(.hidden)

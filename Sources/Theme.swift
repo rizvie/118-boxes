@@ -41,8 +41,28 @@ enum Theme {
     static let textHi = Color(hex: 0x171B28)
     static let textLo = Color(hex: 0x6B6355)
 
+    /// Rounded type that honours Dynamic Type.
+    ///
+    /// `.system(size:)` is a fixed point size and does not scale, so the app
+    /// used to ignore the user's text size setting completely. Mapping the
+    /// numeric size to the nearest text style gets real scaling from one place
+    /// rather than reworking every call site.
     static func rounded(_ size: CGFloat, _ weight: Font.Weight = .bold) -> Font {
-        .system(size: size, weight: weight, design: .rounded)
+        .system(textStyle(for: size), design: .rounded).weight(weight)
+    }
+
+    private static func textStyle(for size: CGFloat) -> Font.TextStyle {
+        switch size {
+        case ..<11:  return .caption2
+        case ..<13:  return .caption
+        case ..<15:  return .footnote
+        case ..<16:  return .subheadline
+        case ..<18:  return .body
+        case ..<21:  return .title3
+        case ..<27:  return .title2
+        case ..<34:  return .title
+        default:     return .largeTitle
+        }
     }
 }
 

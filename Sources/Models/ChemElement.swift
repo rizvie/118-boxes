@@ -74,6 +74,24 @@ enum SampleForm {
     case cloud      // gas
     case tube       // noble gas discharge tube
     case shard      // radioactive, glowing
+
+    /// What the drawing looks like, for VoiceOver. Describes appearance only,
+    /// never the element, so the picture round stays winnable without handing
+    /// over the answer.
+    var spoken: String {
+        switch self {
+        case .chunk:   return "an irregular lump"
+        case .ingot:   return "a cast bar"
+        case .pellets: return "a scatter of little beads"
+        case .powder:  return "a heap of powder"
+        case .crystal: return "a cluster of faceted crystals"
+        case .wire:    return "a coil of wire"
+        case .pool:    return "droplets and a puddle"
+        case .cloud:   return "a drifting cloud"
+        case .tube:    return "a glowing discharge tube"
+        case .shard:   return "a glowing shard with a pulsing ring"
+        }
+    }
 }
 
 // MARK: - Element
@@ -154,6 +172,14 @@ struct ChemElement: Identifiable, Hashable {
 
     /// Shiny (metal sheen) or matte (rock, powder)?
     var isShiny: Bool { category.isMetallic && category != .metalloid }
+
+    /// VoiceOver description of the drawn sample. Appearance only: form, sheen
+    /// and state, which is exactly the information the picture gives a sighted
+    /// child. Naming the element would give away the answer.
+    var artDescription: String {
+        let sheen = isShiny ? "shiny " : ""
+        return "\(sheen)\(form.spoken). \(phase.label) at room temperature."
+    }
 
     /// Column (1...18) on the standard table. Lanthanides and actinides sit in
     /// their own two rows underneath.

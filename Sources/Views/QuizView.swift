@@ -59,6 +59,7 @@ struct QuizView: View {
                 dismiss()
             } label: {
                 Image(systemName: "xmark")
+                    .accessibilityLabel("Close")
                     .font(Theme.rounded(18, .heavy))
                     .foregroundStyle(Theme.textLo)
                     .frame(width: 44, height: 44)

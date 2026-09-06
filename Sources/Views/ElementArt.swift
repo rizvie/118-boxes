@@ -87,6 +87,12 @@ struct ElementArt: View {
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
                     .strokeBorder(Theme.boxLine, lineWidth: 2)
             )
+            // VoiceOver gets what a sighted child gets: what the sample looks
+            // like, not which element it is. Naming the element here would hand
+            // over the answer in the picture round, and saying nothing at all
+            // would make that round unplayable.
+            .accessibilityElement()
+            .accessibilityLabel(Text(element.artDescription))
         }
         .onAppear {
             guard animated else { return }
