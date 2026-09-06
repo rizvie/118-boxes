@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Elementary collects nothing and has no network code. Progress and
+         settings live on the device only. These declarations say exactly that. -->
+
+    <!-- No tracking as Apple defines it: nothing is linked to data from other
+         apps or websites, and there is no data broker involvement. -->
+    <key>NSPrivacyTracking</key>
+    <false/>
+    <key>NSPrivacyTrackingDomains</key>
+    <array/>
+
+    <!-- Nothing leaves the device, so nothing is collected. -->
+    <key>NSPrivacyCollectedDataTypes</key>
+    <array/>
+
+    <!-- Required-reason APIs. @AppStorage is UserDefaults, which is on Apple's
+         required-reason list; omitting this is what triggers the
+         ITMS-91053 "Missing API declaration" email on upload.
+         CA92.1 = access only to this app's own defaults, never shared with,
+         nor read from, any other app or an app group. -->
+    <key>NSPrivacyAccessedAPITypes</key>
+    <array>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>CA92.1</string>
+            </array>
+        </dict>
+    </array>
+</dict>
+</plist>
