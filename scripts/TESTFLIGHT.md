@@ -7,6 +7,23 @@ scripts/testflight-upload.sh
 Archives Release, exports, and uploads in one go. The build then processes in
 App Store Connect for a few minutes before it appears in TestFlight.
 
+## Before the first build can be installed
+
+A build being `VALID` and `READY_FOR_BETA_TESTING` is **not** enough to install
+it. It also has to be distributable to a group, and a new app record has none,
+so TestFlight on the phone simply shows nothing. Run this once:
+
+```sh
+TESTFLIGHT_TESTER_EMAIL=you@example.com \
+TESTFLIGHT_TESTER_FIRST=First TESTFLIGHT_TESTER_LAST=Last \
+  python3 scripts/setup-testflight-group.py
+```
+
+It is idempotent, and the tester details come from the environment rather than
+the file because this repository is public. The group is created with
+`hasAccessToAllBuilds`, so every future upload is available without re-running
+anything.
+
 ## What it needs
 
 - `~/.clipper-asc.env` with `ASC_KEY_ID` and `ASC_ISSUER_ID`. One App Store
