@@ -5,7 +5,7 @@ import SwiftUI
 /// Without it a six-year-old lands on three unexplained buttons. Deliberately
 /// short: at this age nobody reads a paragraph, so it is four lines and a big
 /// button. The tiles are the same four elements as the app icon, so the thing
-/// he tapped on the home screen is the thing he sees first.
+/// they tapped on the home screen is the thing they see first.
 struct IntroView: View {
     var onStart: () -> Void
 

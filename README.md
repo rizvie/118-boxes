@@ -2,7 +2,7 @@
 
 A periodic table quiz for a six-year-old. Show a symbol, tap the right name.
 Every element has a picture of what the stuff actually looks like, and the
-names get read out loud, because he can read but he's never heard "magnesium".
+names get read out loud, because they can read but have never heard "magnesium".
 
 ## The three rounds
 
@@ -14,7 +14,7 @@ names get read out loud, because he can read but he's never heard "magnesium".
 - **Find the symbol** The name is the question, four symbols to choose from.
 
 Ten questions a round, then a score out of ten and up to three stars. Anything
-he gets wrong is listed at the end with its picture.
+they get wrong is listed at the end with its picture.
 
 ## The pictures
 
@@ -46,7 +46,7 @@ derived from its family and atomic number.
 ## Which elements come up
 
 All 118, from the first round. Nothing is locked. The picker just weights
-things: anything he hasn't met yet comes up more often, anything he's already
+things: anything they haven't met yet comes up more often, anything they've already
 learned comes up less, and the first 36 get a nudge because that's where the
 familiar ones live. That weighting is `QuizEngine.buildRound`, if you want to
 change it.
@@ -87,4 +87,4 @@ The app icon is generated: `python3 scripts/make_icon.py`.
 All the element data is one array in `Sources/Models/ElementData.swift`. Each
 row is atomic number, symbol, name, family, state, colour and the one-sentence
 fact. Facts are written for an early reader: one short sentence, ideally
-something he could point at in the real world.
+something they could point at in the real world.

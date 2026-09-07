@@ -47,7 +47,7 @@ struct SettingsView: View {
                 Section {
                     Toggle("Show the picture as a clue", isOn: $showPictureHint)
                 } footer: {
-                    Text("Off makes the symbol rounds harder: the picture only appears once he's answered.")
+                    Text("Off makes the symbol rounds harder: the picture only appears once they've answered.")
                 }
                 Section {
                     Button("Reset progress", role: .destructive) { confirmReset = true }
@@ -88,7 +88,7 @@ struct SettingsView: View {
             .onChange(of: speechOn) { _, on in Speaker.shared.enabled = on }
             .onChange(of: voiceIdentifier) { _, _ in
                 // Say something so the choice is audible immediately. Magnesium
-                // because it's the word he couldn't say.
+                // because it's the word that started all this.
                 Speaker.shared.preview("Magnesium")
             }
             .alert("Start again?", isPresented: $confirmReset) {
@@ -98,7 +98,7 @@ struct SettingsView: View {
                     try? context.save()
                 }
             } message: {
-                Text("This clears every element he's learned.")
+                Text("This clears every element they've learned.")
             }
         }
     }

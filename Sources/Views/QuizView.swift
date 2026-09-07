@@ -91,7 +91,7 @@ struct QuizView: View {
     private func prompt(_ engine: QuizEngine) -> some View {
         let e = engine.current.answer
         // In the picture round the sample is the question. Elsewhere it's a
-        // clue underneath, and it always appears once he's answered.
+        // clue underneath, and it always appears once they have answered.
         let showClue = engine.mode != .pictureToName
             && (showPictureHint || engine.isAnswered)
 

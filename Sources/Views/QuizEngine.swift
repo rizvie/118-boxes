@@ -89,7 +89,7 @@ final class QuizEngine {
 
     // MARK: - Round building
 
-    /// Picks ten elements. Everything on the table can come up, but anything he
+    /// Picks ten elements. Everything on the table can come up, but anything they
     /// hasn't met yet, or hasn't nailed yet, comes up more often, and the first
     /// few rows get a nudge because that's where the familiar ones live.
     private static func buildRound(mode: QuizMode,

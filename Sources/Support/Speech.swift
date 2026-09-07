@@ -1,6 +1,6 @@
 import AVFoundation
 
-/// Reads element names out loud. He's six: hearing "Magnesium" while seeing it
+/// Reads element names out loud. At six, hearing "Magnesium" while seeing it
 /// written is most of the point.
 @MainActor
 final class Speaker {
@@ -19,7 +19,7 @@ final class Speaker {
     /// Voices actually installed on this device, English only.
     ///
     /// Deliberately not every language on the device. A six-year-old who sets
-    /// element names to Finnish has no way of reading his way back out, and the
+    /// element names to Finnish has no way of reading their way back out, and the
     /// point of the feature is accent, not translation.
     ///
     /// Enhanced and Premium voices only appear here once they have been
@@ -29,7 +29,7 @@ final class Speaker {
         AVSpeechSynthesisVoice.speechVoices()
             .filter { $0.language.hasPrefix("en") }
             .sorted {
-                // Australian first, it's the default and the one he hears at home.
+                // Australian first: it is the default and the accent they hear at home.
                 if ($0.language == "en-AU") != ($1.language == "en-AU") {
                     return $0.language == "en-AU"
                 }
